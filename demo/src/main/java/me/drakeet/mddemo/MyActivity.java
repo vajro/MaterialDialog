@@ -3,6 +3,8 @@ package me.drakeet.mddemo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -49,5 +51,10 @@ public class MyActivity extends ActionBarActivity {
         } else {
             Toast.makeText(getApplicationContext(), "You should init firstly!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void setView(View v) {
+        mMaterialDialog.setView(new EditText(this));
+        mMaterialDialog.show();
     }
 }

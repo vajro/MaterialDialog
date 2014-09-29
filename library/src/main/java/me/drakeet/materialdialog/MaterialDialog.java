@@ -14,26 +14,35 @@ import android.widget.TextView;
  * Created by drakeet on 9/28/14.
  */
 public class MaterialDialog {
-    Context mContext;
-    AlertDialog mAlertDialog;
-    TextView mTitleView;
-    TextView mMessageView;
-    LinearLayout mButtonLayout;
+
+    private Context mContext;
+    private AlertDialog mAlertDialog;
+    private TextView mTitleView;
+    private TextView mMessageView;
+    private Window mAlertDialogWindow;
+    private LinearLayout mButtonLayout;
 
     public MaterialDialog(Context context) {
         this.mContext = context;
-        mAlertDialog = new android.app.AlertDialog.Builder(mContext).create();
+        mAlertDialog = new AlertDialog.Builder(mContext).create();
         show();
-        Window window = mAlertDialog.getWindow();
-        window.setContentView(R.layout.layout_materialdialog);
-        mTitleView = (TextView) window.findViewById(R.id.title);
-        mMessageView = (TextView) window.findViewById(R.id.message);
-        mButtonLayout = (LinearLayout) window.findViewById(R.id.buttonLayout);
+        mAlertDialogWindow = mAlertDialog.getWindow();
+        mAlertDialogWindow.setContentView(R.layout.layout_materialdialog);
+        mTitleView = (TextView) mAlertDialogWindow.findViewById(R.id.title);
+        mMessageView = (TextView) mAlertDialogWindow.findViewById(R.id.message);
+        mButtonLayout = (LinearLayout) mAlertDialogWindow.findViewById(R.id.buttonLayout);
     }
 
     public void show() {
         mAlertDialog.show();
     }
+
+    public void setView(View view) {
+        LinearLayout linearLayout = (LinearLayout) mAlertDialogWindow.findViewById(R.id.contentView);
+        linearLayout.removeAllViews();
+        linearLayout.addView(view);
+    }
+
 
     public void setTitle(int resId) {
         mTitleView.setText(resId);
@@ -100,7 +109,7 @@ public class MaterialDialog {
         mAlertDialog.dismiss();
     }
 
-    public int dip2px( float dpValue) {
+    private int dip2px( float dpValue) {
         final float scale = mContext.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
