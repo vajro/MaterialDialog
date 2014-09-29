@@ -40,6 +40,7 @@ public class MaterialDialog {
     public void setView(View view) {
         LinearLayout linearLayout = (LinearLayout) mAlertDialogWindow.findViewById(R.id.contentView);
         linearLayout.removeAllViews();
+        //linearLayout.setGravity(Gravity.CENTER);
         linearLayout.addView(view);
     }
 

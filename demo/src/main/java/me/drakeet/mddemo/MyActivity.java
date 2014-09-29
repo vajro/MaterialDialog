@@ -54,7 +54,8 @@ public class MyActivity extends ActionBarActivity {
     }
 
     public void setView(View v) {
-        mMaterialDialog.setView(new EditText(this));
+        EditText contentView = new EditText(this);
+        mMaterialDialog.setView(contentView);
         mMaterialDialog.show();
     }
 }
