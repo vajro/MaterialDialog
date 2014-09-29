@@ -5,7 +5,8 @@ This is an Android library, I call it MaterialDialog. It's very easy to use. Jus
 ## Screenshots
 
 <img src="/screenshots/s1.png" alt="main" title="screenshot" width="270" height="486" />  <img src="/screenshots/s2.png" alt="main" title="screenshot" width="270" height="486" />
-<img src="/screenshots/s3.png" alt="main" title="screenshot" width="270" height="486" />
+<img src="/screenshots/s3.png" alt="main" title="screenshot" width="486" height="270" />
+
 <img src="/screenshots/s4.png" alt="main" title="screenshot" width="270" height="486" />
 
 ## Usage
