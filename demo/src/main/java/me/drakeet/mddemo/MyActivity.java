@@ -54,8 +54,12 @@ public class MyActivity extends ActionBarActivity {
     }
 
     public void setView(View v) {
-        EditText contentView = new EditText(this);
-        mMaterialDialog.setView(contentView);
-        mMaterialDialog.show();
+        if (mMaterialDialog != null) {
+            EditText contentView = new EditText(this);
+            mMaterialDialog.setView(contentView);
+            mMaterialDialog.show();
+        } else {
+            Toast.makeText(getApplicationContext(), "You should init firstly!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
