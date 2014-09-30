@@ -42,7 +42,9 @@ public class MaterialDialog {
 
     public void setView(View view) {
         mView = view;
-
+        if (mBuilder != null) {
+            mBuilder.setView(view);
+        }
     }
 
     public void dismiss() {
@@ -149,7 +151,7 @@ public class MaterialDialog {
             }
             if (mLayoutParams != null && mNegativeButton != null) {
                 if (mButtonLayout.getChildCount() > 0) {
-                    mLayoutParams.setMargins(20, 0, 10, 0);
+                    mLayoutParams.setMargins(20, 0, 24, 0);
                     mNegativeButton.setLayoutParams(mLayoutParams);
                     mButtonLayout.addView(mNegativeButton, 1);
                 } else {
@@ -220,6 +222,12 @@ public class MaterialDialog {
                 button.setLayoutParams(params);
                 mButtonLayout.addView(button);
             }
+        }
+
+        public void setView(View view) {
+            LinearLayout l = (LinearLayout) mAlertDialogWindow.findViewById(R.id.contentView);
+            l.removeAllViews();
+            l.addView(view);
         }
     }
 }

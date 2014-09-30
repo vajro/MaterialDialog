@@ -57,6 +57,8 @@ if (mMaterialDialog != null) {
 }
 ```
 
+[demo apk](/demo-release.apk)
+
 Then, will also provide a method to replace the full background view.
 
 ## About me

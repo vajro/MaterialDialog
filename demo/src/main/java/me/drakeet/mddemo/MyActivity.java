@@ -26,7 +26,7 @@ public class MyActivity extends ActionBarActivity {
         mMaterialDialog.setMessage("Hi! This is a MaterialDialog. It's very easy to use, you just new it, " +
                 "then the beautiful AlertDialog will show automatedly. It is artistic, conforms to Google Material Design." +
                 " I hope that you can like it, enjoys it. ^ ^");
-        mMaterialDialog.setPositiveButton("OK", new View.OnClickListener() {
+        mMaterialDialog.setPositiveButton("确定", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mMaterialDialog.dismiss();
@@ -35,7 +35,7 @@ public class MyActivity extends ActionBarActivity {
             }
         });
 
-        mMaterialDialog.setNegativeButton("CANCLE", new View.OnClickListener() {
+        mMaterialDialog.setNegativeButton("取消", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mMaterialDialog.dismiss();
