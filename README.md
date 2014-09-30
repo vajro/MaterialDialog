@@ -39,10 +39,23 @@ mMaterialDialog.setNegativeButton("CANCLE", new View.OnClickListener() {
 });
 
 mMaterialDialog.show();
+
+// You can change the message anytime. before show
+mMaterialDialog.setTitle("提示");
+mMaterialDialog.show();
+// You can change the message anytime. after show
+mMaterialDialog.setMessage("你好，世界~");
 ```
 With the first init and `mMaterialDialog.show()`, it will show automatedly.
 
 In addition, you can call `.setView (View v) ` to set a View what you like or custom after the instantiation.
+```java
+if (mMaterialDialog != null) {
+    EditText contentView = new EditText(this);
+    mMaterialDialog.setView(contentView);
+    mMaterialDialog.show();
+}
+```
 
 Then, will also provide a method to replace the full background view.
 

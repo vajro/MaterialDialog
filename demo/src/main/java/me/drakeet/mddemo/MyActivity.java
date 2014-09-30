@@ -47,6 +47,8 @@ public class MyActivity extends ActionBarActivity {
 
     public void show(View v) {
         if (mMaterialDialog != null) {
+            // You can change the message anytime.
+            mMaterialDialog.setTitle("提示");
             mMaterialDialog.show();
             // You can change the message anytime.
             mMaterialDialog.setMessage("嗨！这是一个 MaterialDialog. 它非常方便使用，你只需将它实例化，这个美观的对话框便会自动地显示出来。" +
