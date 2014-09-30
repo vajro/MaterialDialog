@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import me.drakeet.materialdialog.MaterialDialog;
 
 
@@ -41,11 +42,13 @@ public class MyActivity extends ActionBarActivity {
                 Toast.makeText(MyActivity.this, "Cancle", Toast.LENGTH_LONG).show();
             }
         });
+        Toast.makeText(getApplicationContext(), "Initializes successfully.", Toast.LENGTH_SHORT).show();
     }
 
     public void show(View v) {
         if (mMaterialDialog != null) {
             mMaterialDialog.show();
+            // You can change the message anytime.
             mMaterialDialog.setMessage("嗨！这是一个 MaterialDialog. 它非常方便使用，你只需将它实例化，这个美观的对话框便会自动地显示出来。" +
                     "它简洁小巧，完全遵照 Google 2014 年发布的 Material Design 风格，希望你能喜欢它！^ ^");
         } else {

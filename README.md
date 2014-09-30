@@ -1,12 +1,11 @@
-# Material Dialog v1.0.2
+# Material Dialog v1.0.3
 
-This is an Android library, I call it MaterialDialog. It's very easy to use. Just new it, then the beautiful AlertDialog will show automatedly. It is artistic, conforms to Google Material Design. I hope that you will like it, and enjoys it. ^ ^
+This is an Android library, I call it MaterialDialog. It's very easy to use. Just `new` it & call `.show()` method, then the beautiful AlertDialog will show automatedly. It is artistic, conforms to Google Material Design. I hope that you will like it, and enjoys it. ^ ^
 
 ## Screenshots
 
-<img src="/screenshots/s1.png" alt="main" title="screenshot" width="270" height="486" />  <img src="/screenshots/s2.png" alt="main" title="screenshot" width="270" height="486" />
-<img src="/screenshots/s3.png" alt="main" title="screenshot" width="270" height="486" />
-<img src="/screenshots/s4.png" alt="main" title="screenshot" width="270" height="486" />
+<img src="/screenshots/s1.png" alt="main" title="screenshot" width="270" height="486" /><img src="/screenshots/s2.png" alt="main" title="screenshot" width="270" height="486" />
+<img src="/screenshots/s3.png" alt="main" title="screenshot" width="270" height="486" /><img src="/screenshots/s4.png" alt="main" title="screenshot" width="270" height="486" />
 
 ## Usage
 ### Step 1
@@ -38,10 +37,15 @@ mMaterialDialog.setNegativeButton("CANCLE", new View.OnClickListener() {
         ...
     }
 });
+
+mMaterialDialog.show();
 ```
-With the first init, it will show automatedly. Or, you can init it and call the `mMaterialDialog.show()` to show the dialog simply.
+With the first init and `mMaterialDialog.show()`, it will show automatedly.
 
 In addition, you can call `.setView (View v) ` to set a View what you like or custom after the instantiation.
+
+Then, will also provide a method to replace the full background view.
+
 ## About me
 
 A student in mainland China. (^ ^ Thanks daimajia)
