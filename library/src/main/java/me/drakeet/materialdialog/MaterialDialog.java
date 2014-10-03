@@ -3,8 +3,10 @@ package me.drakeet.materialdialog;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -27,6 +29,8 @@ public class MaterialDialog {
     private LinearLayout.LayoutParams mLayoutParams;
     private Button mNegativeButton;
     private boolean mHasShow = false;
+    private Drawable mBackgroundDrawable;
+    private int mBackgroundResId;
 
     public MaterialDialog(Context context) {
         this.mContext = context;
@@ -46,6 +50,21 @@ public class MaterialDialog {
             mBuilder.setView(view);
         }
     }
+
+    public void setBackgroundView(Drawable drawable) {
+        mBackgroundDrawable = drawable;
+        if (mBuilder != null) {
+            mBuilder.setBackgroundView(mBackgroundDrawable);
+        }
+    }
+
+    public void setBackgroundResource(int resId) {
+        mBackgroundResId = resId;
+        if (mBuilder != null) {
+            mBuilder.setBackgroundResource(mBackgroundResId);
+        }
+    }
+
 
     public void dismiss() {
         mAlertDialog.dismiss();
@@ -85,12 +104,15 @@ public class MaterialDialog {
         mPositiveButton = new Button(mContext);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         mPositiveButton.setLayoutParams(params);
-        mPositiveButton.setBackgroundResource(R.drawable.material_card);
+        mPositiveButton.setBackgroundResource(R.drawable.material_card_nos);
         mPositiveButton.setTextColor(Color.argb(255, 35, 159, 242));
         mPositiveButton.setText(text);
         mPositiveButton.setGravity(Gravity.CENTER);
         mPositiveButton.setTextSize(14);
-        mPositiveButton.setPadding(dip2px(12), 0, dip2px(32), dip2px(16));
+        LinearLayout.LayoutParams layoutParams =  new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.setMargins(dip2px(2), 0, dip2px(16), dip2px(12));
+        mPositiveButton.setLayoutParams(layoutParams);
         mPositiveButton.setOnClickListener(listener);
     }
 
@@ -102,16 +124,15 @@ public class MaterialDialog {
      */
     public void setNegativeButton(String text, final View.OnClickListener listener) {
         mNegativeButton = new Button(mContext);
-        mLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        mLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
         mNegativeButton.setLayoutParams(mLayoutParams);
-        mNegativeButton.setBackgroundResource(R.drawable.material_card);
+        mNegativeButton.setBackgroundResource(R.drawable.material_card_nos);
         mNegativeButton.setText(text);
         mNegativeButton.setTextColor(Color.argb(222, 0, 0, 0));
         mNegativeButton.setTextSize(14);
         mNegativeButton.setGravity(Gravity.CENTER);
-        mNegativeButton.setPadding(0, 0, 0, dip2px(16));
         mNegativeButton.setOnClickListener(listener);
-
     }
 
     private class Builder {
@@ -151,13 +172,21 @@ public class MaterialDialog {
             }
             if (mLayoutParams != null && mNegativeButton != null) {
                 if (mButtonLayout.getChildCount() > 0) {
-                    mLayoutParams.setMargins(20, 0, 24, 0);
+                    mLayoutParams.setMargins(dip2px(12), 0, 0, dip2px(12));
                     mNegativeButton.setLayoutParams(mLayoutParams);
                     mButtonLayout.addView(mNegativeButton, 1);
                 } else {
                     mNegativeButton.setLayoutParams(mLayoutParams);
                     mButtonLayout.addView(mNegativeButton);
                 }
+            }
+            if (mBackgroundResId != 0) {
+                LinearLayout linearLayout = (LinearLayout) mAlertDialogWindow.findViewById(R.id.material_background);
+                linearLayout.setBackgroundResource(mBackgroundResId);
+            }
+            if (mBackgroundDrawable != null) {
+                LinearLayout linearLayout = (LinearLayout) mAlertDialogWindow.findViewById(R.id.material_background);
+                linearLayout.setBackground(mBackgroundDrawable);
             }
         }
 
@@ -228,6 +257,16 @@ public class MaterialDialog {
             LinearLayout l = (LinearLayout) mAlertDialogWindow.findViewById(R.id.contentView);
             l.removeAllViews();
             l.addView(view);
+        }
+
+        public void setBackgroundView(Drawable drawable) {
+            LinearLayout linearLayout = (LinearLayout) mAlertDialogWindow.findViewById(R.id.material_background);
+            linearLayout.setBackground(drawable);
+        }
+
+        public void setBackgroundResource(int resId) {
+            LinearLayout linearLayout = (LinearLayout) mAlertDialogWindow.findViewById(R.id.material_background);
+            linearLayout.setBackgroundResource(resId);
         }
     }
 }
