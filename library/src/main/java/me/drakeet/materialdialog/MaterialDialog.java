@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -51,10 +50,10 @@ public class MaterialDialog {
         }
     }
 
-    public void setBackgroundView(Drawable drawable) {
+    public void setBackground(Drawable drawable) {
         mBackgroundDrawable = drawable;
         if (mBuilder != null) {
-            mBuilder.setBackgroundView(mBackgroundDrawable);
+            mBuilder.setBackground(mBackgroundDrawable);
         }
     }
 
@@ -259,7 +258,7 @@ public class MaterialDialog {
             l.addView(view);
         }
 
-        public void setBackgroundView(Drawable drawable) {
+        public void setBackground(Drawable drawable) {
             LinearLayout linearLayout = (LinearLayout) mAlertDialogWindow.findViewById(R.id.material_background);
             linearLayout.setBackground(drawable);
         }

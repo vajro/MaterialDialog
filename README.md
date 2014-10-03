@@ -9,7 +9,7 @@ This is an Android library, I call it MaterialDialog. It's very easy to use. Jus
 
 You can also change the background with a image what you like. it's very easy!:
 
-<img src="/screenshots/s5.png" alt="screenshot" title="screenshot" width="270" height="486" />
+<img src="/screenshots/s5.png" alt="screenshot" title="screenshot" width="270" height="486" /><img src="/screenshots/s6.png" alt="screenshot" title="screenshot" width="270" height="486" />
 ## Usage
 ### Step 1
 

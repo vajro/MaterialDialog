@@ -1,5 +1,10 @@
 package me.drakeet.mddemo;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -60,6 +65,8 @@ public class MyActivity extends ActionBarActivity {
         }
     }
 
+    static int i = 0;
+
     public void setView(View v) {
         switch (v.getId()) {
             case R.id.button_set_view: {
@@ -75,8 +82,16 @@ public class MyActivity extends ActionBarActivity {
             case R.id.button_set_background: {
                 mMaterialDialog = new MaterialDialog(this);
                 if (mMaterialDialog != null) {
-                    mMaterialDialog.setBackgroundResource(R.drawable.background);
+                    if (i % 2 != 0) {
+                        mMaterialDialog.setBackgroundResource(R.drawable.background);
+                    } else {
+                        Resources res = getResources();
+                        Bitmap bmp = BitmapFactory.decodeResource(res, R.drawable.background2);
+                        BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bmp);
+                        mMaterialDialog.setBackground(bitmapDrawable);
+                    }
                     mMaterialDialog.show();
+                    i++;
                 } else {
                     Toast.makeText(getApplicationContext(), "You should init firstly!", Toast.LENGTH_SHORT).show();
                 }
