@@ -26,8 +26,6 @@ Import the library, then add it to your `/settings.gradle` and `/app/build.gradl
 
 [Android Studio 简介及导入 jar 包和第三方开源库方法](http://drakeet.me/android-studio)
 
-Tip: I still do not understand to use Maven Control, if you have some tutorials on How to push Android library to Maven Control, can recommend to me, thanks!
-
 ### Step 2
 
 It's very easy, just like this:
