@@ -1,4 +1,4 @@
-# Material Dialog v1.0.4
+# Material Dialog v1.0.5
 
 This is an Android library, I call it MaterialDialog. It's very easy to use. Just `new` it & call `.show()` method, then the beautiful AlertDialog will show automatedly. It is artistic, conforms to Google Material Design. I hope that you will like it, and enjoys it. ^ ^
 
