@@ -16,20 +16,21 @@ import android.widget.TextView;
  */
 public class MaterialDialog {
 
-    private Context mContext;
-    private AlertDialog mAlertDialog;
-    private MaterialDialog.Builder mBuilder;
-    private View mView;
-    private int mTitleResId;
-    private CharSequence mTitle;
-    private int mMessageResId;
-    private CharSequence mMessage;
-    private Button mPositiveButton;
+    private boolean                   mCancel;
+    private Context                   mContext;
+    private AlertDialog               mAlertDialog;
+    private MaterialDialog.Builder    mBuilder;
+    private View                      mView;
+    private int                       mTitleResId;
+    private CharSequence              mTitle;
+    private int                       mMessageResId;
+    private CharSequence              mMessage;
+    private Button                    mPositiveButton;
     private LinearLayout.LayoutParams mLayoutParams;
-    private Button mNegativeButton;
+    private Button                    mNegativeButton;
     private boolean mHasShow = false;
     private Drawable mBackgroundDrawable;
-    private int mBackgroundResId;
+    private int      mBackgroundResId;
 
     public MaterialDialog(Context context) {
         this.mContext = context;
@@ -108,11 +109,17 @@ public class MaterialDialog {
         mPositiveButton.setText(text);
         mPositiveButton.setGravity(Gravity.CENTER);
         mPositiveButton.setTextSize(14);
-        LinearLayout.LayoutParams layoutParams =  new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
         layoutParams.setMargins(dip2px(2), 0, dip2px(16), dip2px(12));
         mPositiveButton.setLayoutParams(layoutParams);
         mPositiveButton.setOnClickListener(listener);
+    }
+
+    public void setCanceledOnTouchOutside(boolean cancel) {
+        this.mCancel = cancel;
     }
 
     /**
@@ -123,8 +130,10 @@ public class MaterialDialog {
      */
     public void setNegativeButton(String text, final View.OnClickListener listener) {
         mNegativeButton = new Button(mContext);
-        mLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
+        mLayoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
         mNegativeButton.setLayoutParams(mLayoutParams);
         mNegativeButton.setBackgroundResource(R.drawable.material_card_nos);
         mNegativeButton.setText(text);
@@ -134,11 +143,12 @@ public class MaterialDialog {
         mNegativeButton.setOnClickListener(listener);
     }
 
+
     private class Builder {
 
-        private TextView mTitleView;
-        private TextView mMessageView;
-        private Window mAlertDialogWindow;
+        private TextView     mTitleView;
+        private TextView     mMessageView;
+        private Window       mAlertDialogWindow;
         private LinearLayout mButtonLayout;
 
         private Builder() {
@@ -187,6 +197,7 @@ public class MaterialDialog {
                 LinearLayout linearLayout = (LinearLayout) mAlertDialogWindow.findViewById(R.id.material_background);
                 linearLayout.setBackground(mBackgroundDrawable);
             }
+            mAlertDialog.setCanceledOnTouchOutside(mCancel);
         }
 
         public void setTitle(int resId) {

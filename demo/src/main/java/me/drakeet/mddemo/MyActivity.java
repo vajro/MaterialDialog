@@ -55,6 +55,7 @@ public class MyActivity extends ActionBarActivity {
                     Toast.makeText(MyActivity.this, "Cancle", Toast.LENGTH_LONG).show();
                 }
             });
+            mMaterialDialog.setCanceledOnTouchOutside(false);
             // You can change the message anytime.
             // mMaterialDialog.setTitle("提示");
             mMaterialDialog.show();
