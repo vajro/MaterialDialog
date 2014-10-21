@@ -16,17 +16,11 @@ You can also change the background with a image what you like. it's very easy!:
 
 ```groovy
 dependencies {
-    compile 'me.drakeet.materialdialog:library:1.0.5@aar'
+    compile 'me.drakeet.materialdialog:library:1.0.5'
 }
 ```
 
-If it doesn't work, try this:
-
-```groovy
-dependencies {
-    compile 'me.drakeet.materialdialog:library:1.0.4@aar'
-}
-```
+If it doesn't work, please send me a email, drakeet.me@gmail.com
 
 ####Or
 
@@ -82,6 +76,8 @@ And, you can call `setBackgroundResource(int resId)` or `setBackground(Drawable 
 ```java
 mMaterialDialog.setBackgroundResource(R.drawable.background);
 ```
+## 1.0.5
+Add setCanceledOnTouchOutside()
 
 [demo apk](/demo-release.apk)
 
