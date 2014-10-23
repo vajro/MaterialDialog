@@ -85,7 +85,7 @@ And, you can call `setBackgroundResource(int resId)` or `setBackground(Drawable 
 mMaterialDialog.setBackgroundResource(R.drawable.background);
 ```
 ## 1.0.6
-Add `setCanceledOnTouchOutside()`
+Add `setCanceledOnTouchOutside()` // You should set it before `show()`, otherwise, it can't take effect.
 Add `setContetnView()`
 
 [demo apk](/demo-release.apk)
