@@ -132,6 +132,8 @@ public class MaterialDialog {
 
     public void setCanceledOnTouchOutside(boolean cancel) {
         this.mCancel = cancel;
+        if (mBuilder != null)
+            mBuilder.setCanceledOnTouchOutside(mCancel);
     }
 
     /**
@@ -210,6 +212,9 @@ public class MaterialDialog {
                 linearLayout.setBackground(mBackgroundDrawable);
             }
 
+            if (mMessageContentView != null) {
+                this.setContentView(mMessageContentView);
+            }
             mAlertDialog.setCanceledOnTouchOutside(mCancel);
         }
 
@@ -301,5 +306,8 @@ public class MaterialDialog {
         }
 
 
+        public void setCanceledOnTouchOutside(boolean canceledOnTouchOutside) {
+            mAlertDialog.setCanceledOnTouchOutside(canceledOnTouchOutside);
+        }
     }
 }

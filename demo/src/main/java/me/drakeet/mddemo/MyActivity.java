@@ -102,14 +102,17 @@ public class MyActivity extends ActionBarActivity {
                         BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bmp);
                         mMaterialDialog.setBackground(bitmapDrawable);
                     }
+                    mMaterialDialog.setCanceledOnTouchOutside(true);
                     mMaterialDialog.show();
                     i++;
                     Toast.makeText(getApplicationContext(), "Try to click again~", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "You should init firstly!", Toast.LENGTH_SHORT).show();
                 }
+                break;
             }
             case R.id.button_set_contentView: {
+                /*
                 if (mMaterialDialog != null) {
                     ListView listView = new ListView(this);
                     List<String> list = new ArrayList<String>();
@@ -125,6 +128,30 @@ public class MyActivity extends ActionBarActivity {
                     mMaterialDialog.setContentView(listView);
                     mMaterialDialog.show();
                 }
+                */
+                final MaterialDialog alert = new MaterialDialog(this);
+                alert.setTitle("MaterialDialog");
+                alert.setPositiveButton("OK", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                alert.dismiss();
+                            }
+                        });
+                final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                        this,
+                        android.R.layout.simple_list_item_1);
+                arrayAdapter.add("This is item 0");
+                arrayAdapter.add("This is item 1");
+                ListView listView = new ListView(this);
+                float scale = getResources().getDisplayMetrics().density;
+                int dpAsPixels = (int) (8*scale + 0.5f);
+                listView.setPadding(0, dpAsPixels, 0, dpAsPixels);
+                listView.setDividerHeight(0);
+                listView.setAdapter(arrayAdapter);
+
+                alert.setContentView(listView);
+                alert.show();
+
             }
         }
     }
