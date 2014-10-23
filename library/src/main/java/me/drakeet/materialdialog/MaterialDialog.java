@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -284,10 +285,14 @@ public class MaterialDialog {
         public void setView(View view) {
             LinearLayout l = (LinearLayout) mAlertDialogWindow.findViewById(R.id.contentView);
             l.removeAllViews();
+            ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            view.setLayoutParams(layoutParams);
             l.addView(view);
         }
 
         public void setContentView(View contentView) {
+            ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            contentView.setLayoutParams(layoutParams);
             LinearLayout linearLayout = (LinearLayout) mAlertDialogWindow.findViewById(R.id.message_content_view);
             if (linearLayout != null) {
                 linearLayout.removeAllViews();
