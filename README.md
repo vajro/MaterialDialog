@@ -1,6 +1,6 @@
-# Material Dialog v1.0.5
+# Material Dialog v1.0.6
 
-This is an Android library, I call it MaterialDialog. It's very easy to use. Just `new` it & call `.show()` method, then the beautiful AlertDialog will show automatedly. It is artistic, conforms to Google Material Design. I hope that you will like it, and enjoys it. ^ ^
+This is an Android library, I call it MaterialDialog. It's very easy to use. Just `new` it & call `show()` method, then the beautiful AlertDialog will show automatedly. It is artistic, conforms to Google Material Design. I hope that you will like it, and enjoys it. ^ ^
 
 ## Screenshots
 
@@ -10,6 +10,11 @@ This is an Android library, I call it MaterialDialog. It's very easy to use. Jus
 You can also change the background with a image what you like. it's very easy!:
 
 <img src="/screenshots/s5.png" alt="screenshot" title="screenshot" width="270" height="486" /><img src="/screenshots/s6.png" alt="screenshot" title="screenshot" width="270" height="486" />
+
+And with the v1.0.6, you can use the `setContentView()` to change the `message view` to your custom view.
+
+Example:
+<img src="/screenshots/s7.png" alt="setContentView" title="setContentView" width="270" height="486" />
 ## Usage
 ### Step 1
 ####Gradle
@@ -19,6 +24,8 @@ dependencies {
     compile 'me.drakeet.materialdialog:library:1.0.5'
 }
 ```
+
+（v1.0.6 in maven repository can not be used now, but it is coming soon.）
 
 If it doesn't work, please send me a email, drakeet.me@gmail.com
 
@@ -76,8 +83,9 @@ And, you can call `setBackgroundResource(int resId)` or `setBackground(Drawable 
 ```java
 mMaterialDialog.setBackgroundResource(R.drawable.background);
 ```
-## 1.0.5
-Add setCanceledOnTouchOutside()
+## 1.0.6
+Add `setCanceledOnTouchOutside()`
+Add `setContetnView()`
 
 [demo apk](/demo-release.apk)
 

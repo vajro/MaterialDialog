@@ -8,10 +8,15 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -35,26 +40,32 @@ public class MyActivity extends ActionBarActivity {
     public void show(View v) {
         if (mMaterialDialog != null) {
             mMaterialDialog.setTitle("MaterialDialog");
-            mMaterialDialog.setMessage("Hi! This is a MaterialDialog. It's very easy to use, you just new and show() it " +
-                    "then the beautiful AlertDialog will show automatedly. It is artistic, conforms to Google Material Design." +
-                    " I hope that you will like it, and enjoy it. ^ ^");
+            mMaterialDialog.setMessage(
+                    "Hi! This is a MaterialDialog. It's very easy to use, you just new and show() it " +
+                            "then the beautiful AlertDialog will show automatedly. It is artistic, conforms to Google Material Design." +
+                            " I hope that you will like it, and enjoy it. ^ ^"
+            );
             //mMaterialDialog.setBackgroundResource(R.drawable.background);
-            mMaterialDialog.setPositiveButton("OK", new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mMaterialDialog.dismiss();
-                    Toast.makeText(MyActivity.this, "Ok", Toast.LENGTH_LONG).show();
+            mMaterialDialog.setPositiveButton(
+                    "OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mMaterialDialog.dismiss();
+                            Toast.makeText(MyActivity.this, "Ok", Toast.LENGTH_LONG).show();
 
-                }
-            });
+                        }
+                    }
+            );
 
-            mMaterialDialog.setNegativeButton("CANCLE", new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mMaterialDialog.dismiss();
-                    Toast.makeText(MyActivity.this, "Cancle", Toast.LENGTH_LONG).show();
-                }
-            });
+            mMaterialDialog.setNegativeButton(
+                    "CANCLE", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mMaterialDialog.dismiss();
+                            Toast.makeText(MyActivity.this, "Cancle", Toast.LENGTH_LONG).show();
+                        }
+                    }
+            );
             mMaterialDialog.setCanceledOnTouchOutside(false);
             // You can change the message anytime.
             // mMaterialDialog.setTitle("提示");
@@ -93,8 +104,26 @@ public class MyActivity extends ActionBarActivity {
                     }
                     mMaterialDialog.show();
                     i++;
+                    Toast.makeText(getApplicationContext(), "Try to click again~", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "You should init firstly!", Toast.LENGTH_SHORT).show();
+                }
+            }
+            case R.id.button_set_contentView: {
+                if (mMaterialDialog != null) {
+                    ListView listView = new ListView(this);
+                    List<String> list = new ArrayList<String>();
+                    for (int j = 0; j < 4; j++) {
+                        list.add("item " + j);
+                    }
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                            this,
+                            android.R.layout.simple_list_item_1,
+                            list
+                    );
+                    listView.setAdapter(arrayAdapter);
+                    mMaterialDialog.setContentView(listView);
+                    mMaterialDialog.show();
                 }
             }
         }

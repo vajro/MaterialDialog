@@ -16,6 +16,9 @@ import android.widget.TextView;
  */
 public class MaterialDialog {
 
+    private final static int BUTTON_BOTTOM = 9;
+    private final static int BUTTON_TOP    = 9;
+
     private boolean                   mCancel;
     private Context                   mContext;
     private AlertDialog               mAlertDialog;
@@ -31,6 +34,7 @@ public class MaterialDialog {
     private boolean mHasShow = false;
     private Drawable mBackgroundDrawable;
     private int      mBackgroundResId;
+    private View     mMessageContentView;
 
     public MaterialDialog(Context context) {
         this.mContext = context;
@@ -48,6 +52,13 @@ public class MaterialDialog {
         mView = view;
         if (mBuilder != null) {
             mBuilder.setView(view);
+        }
+    }
+
+    public void setContentView(View view) {
+        mMessageContentView = view;
+        if (mBuilder != null) {
+            mBuilder.setContentView(mMessageContentView);
         }
     }
 
@@ -100,6 +111,7 @@ public class MaterialDialog {
             mBuilder.setMessage(message);
     }
 
+
     public void setPositiveButton(String text, final View.OnClickListener listener) {
         mPositiveButton = new Button(mContext);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -113,7 +125,7 @@ public class MaterialDialog {
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
-        layoutParams.setMargins(dip2px(2), 0, dip2px(16), dip2px(12));
+        layoutParams.setMargins(dip2px(2), 0, dip2px(12), dip2px(BUTTON_BOTTOM));
         mPositiveButton.setLayoutParams(layoutParams);
         mPositiveButton.setOnClickListener(listener);
     }
@@ -181,7 +193,7 @@ public class MaterialDialog {
             }
             if (mLayoutParams != null && mNegativeButton != null) {
                 if (mButtonLayout.getChildCount() > 0) {
-                    mLayoutParams.setMargins(dip2px(12), 0, 0, dip2px(12));
+                    mLayoutParams.setMargins(dip2px(12), 0, 0, dip2px(BUTTON_BOTTOM));
                     mNegativeButton.setLayoutParams(mLayoutParams);
                     mButtonLayout.addView(mNegativeButton, 1);
                 } else {
@@ -197,6 +209,7 @@ public class MaterialDialog {
                 LinearLayout linearLayout = (LinearLayout) mAlertDialogWindow.findViewById(R.id.material_background);
                 linearLayout.setBackground(mBackgroundDrawable);
             }
+
             mAlertDialog.setCanceledOnTouchOutside(mCancel);
         }
 
@@ -231,7 +244,7 @@ public class MaterialDialog {
             button.setText(text);
             button.setGravity(Gravity.CENTER);
             button.setTextSize(14);
-            button.setPadding(dip2px(12), 0, dip2px(32), dip2px(16));
+            button.setPadding(dip2px(12), 0, dip2px(32), dip2px(BUTTON_BOTTOM));
             button.setOnClickListener(listener);
             mButtonLayout.addView(button);
         }
@@ -251,10 +264,10 @@ public class MaterialDialog {
             button.setTextColor(Color.argb(222, 0, 0, 0));
             button.setTextSize(14);
             button.setGravity(Gravity.CENTER);
-            button.setPadding(0, 0, 0, dip2px(16));
+            button.setPadding(0, 0, 0, dip2px(8));
             button.setOnClickListener(listener);
             if (mButtonLayout.getChildCount() > 0) {
-                params.setMargins(20, 0, 10, 0);
+                params.setMargins(20, 0, 10, dip2px(BUTTON_BOTTOM));
                 button.setLayoutParams(params);
                 mButtonLayout.addView(button, 1);
             } else {
@@ -269,6 +282,14 @@ public class MaterialDialog {
             l.addView(view);
         }
 
+        public void setContentView(View contentView) {
+            LinearLayout linearLayout = (LinearLayout) mAlertDialogWindow.findViewById(R.id.message_content_view);
+            if (linearLayout != null) {
+                linearLayout.removeAllViews();
+                linearLayout.addView(contentView);
+            }
+        }
+
         public void setBackground(Drawable drawable) {
             LinearLayout linearLayout = (LinearLayout) mAlertDialogWindow.findViewById(R.id.material_background);
             linearLayout.setBackground(drawable);
@@ -278,5 +299,7 @@ public class MaterialDialog {
             LinearLayout linearLayout = (LinearLayout) mAlertDialogWindow.findViewById(R.id.material_background);
             linearLayout.setBackgroundResource(resId);
         }
+
+
     }
 }
