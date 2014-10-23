@@ -14,6 +14,7 @@ You can also change the background with a image what you like. it's very easy!:
 And with the v1.0.6, you can use the `setContentView()` to change the `message view` to your custom view.
 
 Example:
+
 <img src="/screenshots/s7.png" alt="setContentView" title="setContentView" width="270" height="486" />
 ## Usage
 ### Step 1
