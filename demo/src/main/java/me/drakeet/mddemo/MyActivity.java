@@ -1,5 +1,6 @@
 package me.drakeet.mddemo;
 
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -69,6 +71,14 @@ public class MyActivity extends ActionBarActivity {
             mMaterialDialog.setCanceledOnTouchOutside(false);
             // You can change the message anytime.
             // mMaterialDialog.setTitle("提示");
+            mMaterialDialog.setOnDismissListener(
+                    new DialogInterface.OnDismissListener() {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            Toast.makeText(MyActivity.this, "onDismiss", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+            );
             mMaterialDialog.show();
             // You can change the message anytime.
             // mMaterialDialog.setMessage("嗨！这是一个 MaterialDialog. 它非常方便使用，你只需将它实例化，这个美观的对话框便会自动地显示出来。它简洁小巧，完全遵照 Google 2014 年发布的 Material Design 风格，希望你能喜欢它！^ ^");
@@ -84,7 +94,9 @@ public class MyActivity extends ActionBarActivity {
             case R.id.button_set_view: {
                 if (mMaterialDialog != null) {
                     EditText contentView = new EditText(this);
-                    mMaterialDialog.setView(contentView);
+                    View view = LayoutInflater.from(this).inflate(R.layout.edittext_item, null);
+
+                    mMaterialDialog.setView(view);
                     mMaterialDialog.show();
                 } else {
                     Toast.makeText(getApplicationContext(), "You should init firstly!", Toast.LENGTH_SHORT).show();
@@ -131,20 +143,23 @@ public class MyActivity extends ActionBarActivity {
                 */
                 final MaterialDialog alert = new MaterialDialog(this);
                 alert.setTitle("MaterialDialog");
-                alert.setPositiveButton("OK", new View.OnClickListener() {
+                alert.setPositiveButton(
+                        "OK", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 alert.dismiss();
                             }
-                        });
+                        }
+                );
                 final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                         this,
-                        android.R.layout.simple_list_item_1);
+                        android.R.layout.simple_list_item_1
+                );
                 arrayAdapter.add("This is item 0");
                 arrayAdapter.add("This is item 1");
                 ListView listView = new ListView(this);
                 float scale = getResources().getDisplayMetrics().density;
-                int dpAsPixels = (int) (8*scale + 0.5f);
+                int dpAsPixels = (int) (8 * scale + 0.5f);
                 listView.setPadding(0, dpAsPixels, 0, dpAsPixels);
                 listView.setDividerHeight(0);
                 listView.setAdapter(arrayAdapter);

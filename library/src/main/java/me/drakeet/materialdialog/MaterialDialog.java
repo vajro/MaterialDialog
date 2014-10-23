@@ -2,15 +2,19 @@ package me.drakeet.materialdialog;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by drakeet on 9/28/14.
@@ -36,6 +40,7 @@ public class MaterialDialog {
     private Drawable mBackgroundDrawable;
     private int      mBackgroundResId;
     private View     mMessageContentView;
+    private DialogInterface.OnDismissListener mOnDismissListener;
 
     public MaterialDialog(Context context) {
         this.mContext = context;
@@ -158,6 +163,10 @@ public class MaterialDialog {
         mNegativeButton.setOnClickListener(listener);
     }
 
+    public void setOnDismissListener(DialogInterface.OnDismissListener onDismissListener) {
+        this.mOnDismissListener = onDismissListener;
+    }
+
 
     private class Builder {
 
@@ -217,6 +226,9 @@ public class MaterialDialog {
                 this.setContentView(mMessageContentView);
             }
             mAlertDialog.setCanceledOnTouchOutside(mCancel);
+            if (mOnDismissListener != null) {
+                mAlertDialog.setOnDismissListener(mOnDismissListener);
+            }
         }
 
         public void setTitle(int resId) {
@@ -282,12 +294,26 @@ public class MaterialDialog {
             }
         }
 
-        public void setView(View view) {
+        public void setView(final View view) {
             LinearLayout l = (LinearLayout) mAlertDialogWindow.findViewById(R.id.contentView);
             l.removeAllViews();
             ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             view.setLayoutParams(layoutParams);
+            view.setFocusable(true);
+            view.requestFocus();
+            view.setFocusableInTouchMode(true);
+
             l.addView(view);
+            view.setOnFocusChangeListener(
+                    new View.OnFocusChangeListener() {
+                        @Override
+                        public void onFocusChange(View v, boolean hasFocus) {
+                            Toast.makeText(mContext, "" + hasFocus, Toast.LENGTH_SHORT).show();
+                            mAlertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                        }
+                    }
+            );
+
         }
 
         public void setContentView(View contentView) {
