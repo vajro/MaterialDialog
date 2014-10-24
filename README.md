@@ -85,6 +85,7 @@ mMaterialDialog.setBackgroundResource(R.drawable.background);
 ## 1.0.6
 Add `setCanceledOnTouchOutside()` // You should set it before `show()`, otherwise, it can't take effect.
 Add `setContetnView()`
+Add Button press style;
 
 ## BUG
 Can not show soft keyboard automatically when focus is on an EditText. QAQ
