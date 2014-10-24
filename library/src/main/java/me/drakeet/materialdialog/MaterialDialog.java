@@ -40,9 +40,9 @@ public class MaterialDialog {
     private LinearLayout.LayoutParams mLayoutParams;
     private Button                    mNegativeButton;
     private boolean mHasShow = false;
-    private Drawable mBackgroundDrawable;
-    private int      mBackgroundResId;
-    private View     mMessageContentView;
+    private Drawable                          mBackgroundDrawable;
+    private int                               mBackgroundResId;
+    private View                              mMessageContentView;
     private DialogInterface.OnDismissListener mOnDismissListener;
 
     public MaterialDialog(Context context) {
@@ -123,9 +123,12 @@ public class MaterialDialog {
 
     public void setPositiveButton(String text, final View.OnClickListener listener) {
         mPositiveButton = new Button(mContext);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
         mPositiveButton.setLayoutParams(params);
-        mPositiveButton.setBackgroundResource(R.drawable.material_card_nos);
+        mPositiveButton.setBackgroundResource(R.drawable.button);
         mPositiveButton.setTextColor(Color.argb(255, 35, 159, 242));
         mPositiveButton.setText(text);
         mPositiveButton.setGravity(Gravity.CENTER);
@@ -139,18 +142,6 @@ public class MaterialDialog {
         mPositiveButton.setOnClickListener(listener);
     }
 
-    public void setCanceledOnTouchOutside(boolean cancel) {
-        this.mCancel = cancel;
-        if (mBuilder != null)
-            mBuilder.setCanceledOnTouchOutside(mCancel);
-    }
-
-    /**
-     * set negative button
-     *
-     * @param text     the name of button
-     * @param listener
-     */
     public void setNegativeButton(String text, final View.OnClickListener listener) {
         mNegativeButton = new Button(mContext);
         mLayoutParams = new LinearLayout.LayoutParams(
@@ -158,12 +149,18 @@ public class MaterialDialog {
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
         mNegativeButton.setLayoutParams(mLayoutParams);
-        mNegativeButton.setBackgroundResource(R.drawable.material_card_nos);
+        mNegativeButton.setBackgroundResource(R.drawable.button);
         mNegativeButton.setText(text);
         mNegativeButton.setTextColor(Color.argb(222, 0, 0, 0));
         mNegativeButton.setTextSize(14);
         mNegativeButton.setGravity(Gravity.CENTER);
         mNegativeButton.setOnClickListener(listener);
+    }
+
+    public void setCanceledOnTouchOutside(boolean cancel) {
+        this.mCancel = cancel;
+        if (mBuilder != null)
+            mBuilder.setCanceledOnTouchOutside(mCancel);
     }
 
     public void setOnDismissListener(DialogInterface.OnDismissListener onDismissListener) {
@@ -182,12 +179,12 @@ public class MaterialDialog {
             mAlertDialog = new AlertDialog.Builder(mContext).create();
             mAlertDialog.show();
             mAlertDialogWindow = mAlertDialog.getWindow();
-
             View contv = LayoutInflater.from(mContext).inflate(R.layout.layout_materialdialog, null);
             contv.setFocusable(true);
             contv.setFocusableInTouchMode(true);
+
             mAlertDialogWindow.setContentView(contv);
-           // mAlertDialogWindow.setContentView(R.layout.layout_materialdialog);
+            // mAlertDialogWindow.setContentView(R.layout.layout_materialdialog);
 
 //7
             WindowManager.LayoutParams params = new WindowManager.LayoutParams(
@@ -195,7 +192,8 @@ public class MaterialDialog {
                     WindowManager.LayoutParams.WRAP_CONTENT,
                     WindowManager.LayoutParams.TYPE_PHONE,
                     WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM,
-                    PixelFormat.TRANSLUCENT);
+                    PixelFormat.TRANSLUCENT
+            );
 
             mTitleView = (TextView) mAlertDialogWindow.findViewById(R.id.title);
             mMessageView = (TextView) mAlertDialogWindow.findViewById(R.id.message);
@@ -226,6 +224,7 @@ public class MaterialDialog {
                     mNegativeButton.setLayoutParams(mLayoutParams);
                     mButtonLayout.addView(mNegativeButton, 1);
                 } else {
+                    //Toast.makeText(mContext, "hdafd", Toast.LENGTH_SHORT).show();
                     mNegativeButton.setLayoutParams(mLayoutParams);
                     mButtonLayout.addView(mNegativeButton);
                 }
@@ -311,32 +310,45 @@ public class MaterialDialog {
             }
         }
 
-        public void setView(final View view) {
+        public void setView(View view) {
             LinearLayout l = (LinearLayout) mAlertDialogWindow.findViewById(R.id.contentView);
             l.removeAllViews();
             ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             view.setLayoutParams(layoutParams);
-            view.setFocusable(true);
-            view.requestFocus();
-            view.setFocusableInTouchMode(true);
 
-            l.addView(view);
 
             view.setOnFocusChangeListener(
                     new View.OnFocusChangeListener() {
                         @Override
                         public void onFocusChange(View v, boolean hasFocus) {
-                            Toast.makeText(mContext, "" + hasFocus, Toast.LENGTH_SHORT).show();
+                            System.out.println("-->" + hasFocus);
                             mAlertDialogWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
                             // show imm
-                            InputMethodManager imm = (InputMethodManager)mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                            InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
                             imm.toggleSoftInput(
                                     InputMethodManager.SHOW_FORCED,
                                     InputMethodManager.HIDE_IMPLICIT_ONLY
                             );
+
                         }
                     }
             );
+
+            l.addView(view);
+
+            if (view instanceof ViewGroup) {
+
+                ViewGroup viewGroup = (ViewGroup) view;
+
+                for (int i = 0; i < viewGroup.getChildCount(); i++) {
+                    if (viewGroup.getChildAt(i) instanceof EditText) {
+                        EditText editText = (EditText) viewGroup.getChildAt(i);
+                        editText.setFocusable(true);
+                        editText.requestFocus();
+                        editText.setFocusableInTouchMode(true);
+                    }
+                }
+            }
 
 //            view.post(new Runnable() {
 //                          public void run() {

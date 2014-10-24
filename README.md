@@ -87,7 +87,7 @@ Add `setCanceledOnTouchOutside()` // You should set it before `show()`, otherwis
 Add `setContetnView()`
 
 ## BUG
-Can not show soft keyboard automatically when focus is on an EditText.
+Can not show soft keyboard automatically when focus is on an EditText. QAQ
 
 [demo apk](/demo-release.apk)
 

@@ -1,24 +1,19 @@
 package me.drakeet.mddemo;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -92,9 +87,9 @@ public class MyActivity extends ActionBarActivity {
     public void setView(View v) {
         switch (v.getId()) {
             case R.id.button_set_view: {
+                mMaterialDialog = new MaterialDialog(this);
                 if (mMaterialDialog != null) {
-                    EditText contentView = new EditText(this);
-                    View view = LayoutInflater.from(this).inflate(R.layout.edittext_item, null);
+                    View view = LayoutInflater.from(this).inflate(R.layout.progressbar_item, null);
 
                     mMaterialDialog.setView(view);
                     mMaterialDialog.show();
@@ -169,5 +164,14 @@ public class MyActivity extends ActionBarActivity {
 
             }
         }
+    }
+
+    public void buttonPress(View view) {
+        // show imm
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(
+                InputMethodManager.SHOW_FORCED,
+                InputMethodManager.HIDE_IMPLICIT_ONLY
+        );
     }
 }
