@@ -4,12 +4,15 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -179,7 +182,21 @@ public class MaterialDialog {
             mAlertDialog = new AlertDialog.Builder(mContext).create();
             mAlertDialog.show();
             mAlertDialogWindow = mAlertDialog.getWindow();
-            mAlertDialogWindow.setContentView(R.layout.layout_materialdialog);
+
+            View contv = LayoutInflater.from(mContext).inflate(R.layout.layout_materialdialog, null);
+            contv.setFocusable(true);
+            contv.setFocusableInTouchMode(true);
+            mAlertDialogWindow.setContentView(contv);
+           // mAlertDialogWindow.setContentView(R.layout.layout_materialdialog);
+
+//7
+            WindowManager.LayoutParams params = new WindowManager.LayoutParams(
+                    WindowManager.LayoutParams.WRAP_CONTENT,
+                    WindowManager.LayoutParams.WRAP_CONTENT,
+                    WindowManager.LayoutParams.TYPE_PHONE,
+                    WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM,
+                    PixelFormat.TRANSLUCENT);
+
             mTitleView = (TextView) mAlertDialogWindow.findViewById(R.id.title);
             mMessageView = (TextView) mAlertDialogWindow.findViewById(R.id.message);
             mButtonLayout = (LinearLayout) mAlertDialogWindow.findViewById(R.id.buttonLayout);
@@ -304,15 +321,30 @@ public class MaterialDialog {
             view.setFocusableInTouchMode(true);
 
             l.addView(view);
+
             view.setOnFocusChangeListener(
                     new View.OnFocusChangeListener() {
                         @Override
                         public void onFocusChange(View v, boolean hasFocus) {
                             Toast.makeText(mContext, "" + hasFocus, Toast.LENGTH_SHORT).show();
-                            mAlertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                            mAlertDialogWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                            // show imm
+                            InputMethodManager imm = (InputMethodManager)mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.toggleSoftInput(
+                                    InputMethodManager.SHOW_FORCED,
+                                    InputMethodManager.HIDE_IMPLICIT_ONLY
+                            );
                         }
                     }
             );
+
+//            view.post(new Runnable() {
+//                          public void run() {
+//                              view.setFocusable(true);
+//                              view.setFocusableInTouchMode(true);
+//                              view.requestFocus();
+//                          }
+//                      });
 
         }
 

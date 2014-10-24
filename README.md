@@ -22,11 +22,9 @@ Example:
 
 ```groovy
 dependencies {
-    compile 'me.drakeet.materialdialog:library:1.0.5'
+    compile 'me.drakeet.materialdialog:library:1.0.6'
 }
 ```
-
-（v1.0.6 in maven repository can not be used now, but it is coming soon.）
 
 If it doesn't work, please send me a email, drakeet.me@gmail.com
 
@@ -87,6 +85,9 @@ mMaterialDialog.setBackgroundResource(R.drawable.background);
 ## 1.0.6
 Add `setCanceledOnTouchOutside()` // You should set it before `show()`, otherwise, it can't take effect.
 Add `setContetnView()`
+
+## BUG
+Can not show soft keyboard automatically when focus is on an EditText.
 
 [demo apk](/demo-release.apk)
 
