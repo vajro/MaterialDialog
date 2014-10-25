@@ -1,4 +1,4 @@
-# Material Dialog v1.0.6
+# Material Dialog v1.0.7
 
 This is an Android library, I call it MaterialDialog. It's very easy to use. Just `new` it & call `show()` method, then the beautiful AlertDialog will show automatedly. It is artistic, conforms to Google Material Design. I hope that you will like it, and enjoys it. ^ ^
 
@@ -82,7 +82,9 @@ And, you can call `setBackgroundResource(int resId)` or `setBackground(Drawable 
 ```java
 mMaterialDialog.setBackgroundResource(R.drawable.background);
 ```
-## 1.0.6
+## 1.0.7
+Fix the BUG of `Can not show soft keyboard automatically when focus is on an EditText.`
+
 Add `setCanceledOnTouchOutside()` // You should set it before `show()`, otherwise, it can't take effect.
 
 Add `setContetnView()`
@@ -90,7 +92,6 @@ Add `setContetnView()`
 Add Button press style;
 
 ## BUG
-Can not show soft keyboard automatically when focus is on an EditText. QAQ
 
 [demo apk](/demo-release.apk)
 

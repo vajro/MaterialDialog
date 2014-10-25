@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -90,7 +91,6 @@ public class MyActivity extends ActionBarActivity {
                 mMaterialDialog = new MaterialDialog(this);
                 if (mMaterialDialog != null) {
                     View view = LayoutInflater.from(this).inflate(R.layout.progressbar_item, null);
-
                     mMaterialDialog.setView(view);
                     mMaterialDialog.show();
                 } else {
