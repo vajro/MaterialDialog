@@ -39,24 +39,23 @@ Import the library, then add it to your `/settings.gradle` and `/app/build.gradl
 It's very easy, just like this:
 
 ```java
-mMaterialDialog = new MaterialDialog(this);
-mMaterialDialog.setTitle("MaterialDialog");
-mMaterialDialog.setMessage("hello world!");
-mMaterialDialog.setPositiveButton("OK", new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        mMaterialDialog.dismiss();
-        ...
-    }
-});
-
-mMaterialDialog.setNegativeButton("CANCLE", new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        mMaterialDialog.dismiss();
-        ...
-    }
-});
+MaterialDialog mMaterialDialog = new MaterialDialog(this)
+    .setTitle("MaterialDialog")
+    .setMessage("Hello world!")
+    .setPositiveButton("OK", new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            mMaterialDialog.dismiss();
+            ...
+        }
+    })
+    .setNegativeButton("CANCEL", new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            mMaterialDialog.dismiss();
+            ...
+        }
+    });
 
 mMaterialDialog.show();
 
@@ -68,16 +67,16 @@ mMaterialDialog.setMessage("你好，世界~");
 ```
 With the first initial and `mMaterialDialog.show()`, it will show automatedly.
 
-In addition, you can call `setView (View v) ` to set a View what you like or custom after the instantiation.
+In addition, you can call `setView (View v) ` to set a View what you like or
+custom after the instantiation. This replaces the title and message.
 ```java
-if (mMaterialDialog != null) {
-    EditText contentView = new EditText(this);
-    mMaterialDialog.setView(contentView);
-    mMaterialDialog.show();
-}
+EditText contentView = new EditText(this);
+MaterialDialog mMaterialDialog = new MaterialDialog(this).setView(contentView);
+
+mMaterialDialog.show();
 ```
 
-And, you can call `setBackgroundResource(int resId)` or `setBackground(Drawable drawable)` to change the background. Also easily:
+And, you can call `setBackgroundResource(int resId)` or `setBackground(Drawable drawable)` to change the background:
 
 ```java
 mMaterialDialog.setBackgroundResource(R.drawable.background);
@@ -87,7 +86,7 @@ Fix the BUG of `Can not show soft keyboard automatically when focus is on an Edi
 
 Add `setCanceledOnTouchOutside()` // You should set it before `show()`, otherwise, it can't take effect.
 
-Add `setContetnView()`
+Add `setContentView()`
 
 Add Button press style;
 
