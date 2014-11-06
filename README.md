@@ -15,7 +15,7 @@ And with the v1.0.6, you can use the `setContentView()` to change the `message v
 
 Example:
 
-<img src="/screenshots/s7.png" alt="setContentView" title="setContentView" width="270" height="486" />
+<img src="/screenshots/s7.png" alt="setContentView" title="setContentView" width="270" height="486" /><img src="/screenshots/s8.jpg" alt="setContentView" title="setContentView" width="270" height="486" />
 ## Usage
 ### Step 1
 ####Gradle
@@ -39,6 +39,8 @@ Import the library, then add it to your `/settings.gradle` and `/app/build.gradl
 It's very easy, just like this:
 
 ```java
+// Note: if you use maven library, this code below may not return ifself(`this`),
+// because I I just updated the version 1.0.7 to maven, the maven central may not yet reflect over. （2014-11-07 00:02:16）
 MaterialDialog mMaterialDialog = new MaterialDialog(this)
     .setTitle("MaterialDialog")
     .setMessage("Hello world!")
