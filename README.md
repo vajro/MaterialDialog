@@ -93,7 +93,7 @@ Add `setContentView()`
 
 Add Button press style;
 
-## BUG
+##
 
 [demo apk](/demo-release.apk)
 
