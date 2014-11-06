@@ -40,7 +40,7 @@ It's very easy, just like this:
 
 ```java
 // Note: if you use maven library, this code below may not return ifself(`this`),
-// because I I just updated the version 1.0.7 to maven, the maven central may not yet reflect over. （2014-11-07 00:02:16）
+// because I just updated the version 1.0.7 to maven, the maven central may not yet reflect over. （2014-11-07 00:02:16）
 MaterialDialog mMaterialDialog = new MaterialDialog(this)
     .setTitle("MaterialDialog")
     .setMessage("Hello world!")
