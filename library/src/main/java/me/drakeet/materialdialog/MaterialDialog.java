@@ -57,32 +57,36 @@ public class MaterialDialog {
         mHasShow = true;
     }
 
-    public void setView(View view) {
+    public MaterialDialog setView(View view) {
         mView = view;
         if (mBuilder != null) {
             mBuilder.setView(view);
         }
+        return this;
     }
 
-    public void setContentView(View view) {
+    public MaterialDialog setContentView(View view) {
         mMessageContentView = view;
         if (mBuilder != null) {
             mBuilder.setContentView(mMessageContentView);
         }
+        return this;
     }
 
-    public void setBackground(Drawable drawable) {
+    public MaterialDialog setBackground(Drawable drawable) {
         mBackgroundDrawable = drawable;
         if (mBuilder != null) {
             mBuilder.setBackground(mBackgroundDrawable);
         }
+        return this;
     }
 
-    public void setBackgroundResource(int resId) {
+    public MaterialDialog setBackgroundResource(int resId) {
         mBackgroundResId = resId;
         if (mBuilder != null) {
             mBuilder.setBackgroundResource(mBackgroundResId);
         }
+        return this;
     }
 
 
@@ -95,33 +99,40 @@ public class MaterialDialog {
         return (int) (dpValue * scale + 0.5f);
     }
 
-    public void setTitle(int resId) {
+    public MaterialDialog setTitle(int resId) {
         mTitleResId = resId;
-        if (mBuilder != null)
+        if (mBuilder != null) {
             mBuilder.setTitle(resId);
+        }
+        return this;
     }
 
-    public void setTitle(CharSequence title) {
+    public MaterialDialog setTitle(CharSequence title) {
         mTitle = title;
         if (mBuilder != null) {
             mBuilder.setTitle(title);
         }
+        return this;
     }
 
-    public void setMessage(int resId) {
+    public MaterialDialog setMessage(int resId) {
         mMessageResId = resId;
-        if (mBuilder != null)
+        if (mBuilder != null) {
             mBuilder.setMessage(resId);
+        }
+        return this;
     }
 
-    public void setMessage(CharSequence message) {
+    public MaterialDialog setMessage(CharSequence message) {
         mMessage = message;
-        if (mBuilder != null)
+        if (mBuilder != null) {
             mBuilder.setMessage(message);
+        }
+        return this;
     }
 
 
-    public void setPositiveButton(String text, final View.OnClickListener listener) {
+    public MaterialDialog setPositiveButton(String text, final View.OnClickListener listener) {
         mPositiveButton = new Button(mContext);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -140,9 +151,11 @@ public class MaterialDialog {
         layoutParams.setMargins(dip2px(2), 0, dip2px(12), dip2px(BUTTON_BOTTOM));
         mPositiveButton.setLayoutParams(layoutParams);
         mPositiveButton.setOnClickListener(listener);
+
+        return this;
     }
 
-    public void setNegativeButton(String text, final View.OnClickListener listener) {
+    public MaterialDialog setNegativeButton(String text, final View.OnClickListener listener) {
         mNegativeButton = new Button(mContext);
         mLayoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -155,16 +168,21 @@ public class MaterialDialog {
         mNegativeButton.setTextSize(14);
         mNegativeButton.setGravity(Gravity.CENTER);
         mNegativeButton.setOnClickListener(listener);
+
+        return this;
     }
 
-    public void setCanceledOnTouchOutside(boolean cancel) {
+    public MaterialDialog setCanceledOnTouchOutside(boolean cancel) {
         this.mCancel = cancel;
-        if (mBuilder != null)
+        if (mBuilder != null) {
             mBuilder.setCanceledOnTouchOutside(mCancel);
+        }
+        return this;
     }
 
-    public void setOnDismissListener(DialogInterface.OnDismissListener onDismissListener) {
+    public MaterialDialog setOnDismissListener(DialogInterface.OnDismissListener onDismissListener) {
         this.mOnDismissListener = onDismissListener;
+        return this;
     }
 
 

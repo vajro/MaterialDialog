@@ -37,14 +37,14 @@ public class MyActivity extends ActionBarActivity {
 
     public void show(View v) {
         if (mMaterialDialog != null) {
-            mMaterialDialog.setTitle("MaterialDialog");
-            mMaterialDialog.setMessage(
+            mMaterialDialog.setTitle("MaterialDialog")
+                .setMessage(
                     "Hi! This is a MaterialDialog. It's very easy to use, you just new and show() it " +
-                            "then the beautiful AlertDialog will show automatedly. It is artistic, conforms to Google Material Design." +
-                            " I hope that you will like it, and enjoy it. ^ ^"
-            );
+                    "then the beautiful AlertDialog will show automatedly. It is artistic, conforms to Google Material Design." +
+                    " I hope that you will like it, and enjoy it. ^ ^"
+                )
             //mMaterialDialog.setBackgroundResource(R.drawable.background);
-            mMaterialDialog.setPositiveButton(
+                .setPositiveButton(
                     "OK", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -53,9 +53,8 @@ public class MyActivity extends ActionBarActivity {
 
                         }
                     }
-            );
-
-            mMaterialDialog.setNegativeButton(
+                )
+                .setNegativeButton(
                     "CANCLE", new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -63,19 +62,19 @@ public class MyActivity extends ActionBarActivity {
                             Toast.makeText(MyActivity.this, "Cancle", Toast.LENGTH_LONG).show();
                         }
                     }
-            );
-            mMaterialDialog.setCanceledOnTouchOutside(false);
+                )
+                .setCanceledOnTouchOutside(false)
             // You can change the message anytime.
             // mMaterialDialog.setTitle("提示");
-            mMaterialDialog.setOnDismissListener(
+                .setOnDismissListener(
                     new DialogInterface.OnDismissListener() {
                         @Override
                         public void onDismiss(DialogInterface dialog) {
                             Toast.makeText(MyActivity.this, "onDismiss", Toast.LENGTH_SHORT).show();
                         }
                     }
-            );
-            mMaterialDialog.show();
+                )
+                .show();
             // You can change the message anytime.
             // mMaterialDialog.setMessage("嗨！这是一个 MaterialDialog. 它非常方便使用，你只需将它实例化，这个美观的对话框便会自动地显示出来。它简洁小巧，完全遵照 Google 2014 年发布的 Material Design 风格，希望你能喜欢它！^ ^");
         } else {
@@ -91,8 +90,7 @@ public class MyActivity extends ActionBarActivity {
                 mMaterialDialog = new MaterialDialog(this);
                 if (mMaterialDialog != null) {
                     View view = LayoutInflater.from(this).inflate(R.layout.progressbar_item, null);
-                    mMaterialDialog.setView(view);
-                    mMaterialDialog.show();
+                    mMaterialDialog.setView(view).show();
                 } else {
                     Toast.makeText(getApplicationContext(), "You should init firstly!", Toast.LENGTH_SHORT).show();
                 }
@@ -109,8 +107,7 @@ public class MyActivity extends ActionBarActivity {
                         BitmapDrawable bitmapDrawable = new BitmapDrawable(getResources(), bmp);
                         mMaterialDialog.setBackground(bitmapDrawable);
                     }
-                    mMaterialDialog.setCanceledOnTouchOutside(true);
-                    mMaterialDialog.show();
+                    mMaterialDialog.setCanceledOnTouchOutside(true).show();
                     i++;
                     Toast.makeText(getApplicationContext(), "Try to click again~", Toast.LENGTH_SHORT).show();
                 } else {
@@ -136,16 +133,7 @@ public class MyActivity extends ActionBarActivity {
                     mMaterialDialog.show();
                 }
                 */
-                final MaterialDialog alert = new MaterialDialog(this);
-                alert.setTitle("MaterialDialog");
-                alert.setPositiveButton(
-                        "OK", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                alert.dismiss();
-                            }
-                        }
-                );
+
                 final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                         this,
                         android.R.layout.simple_list_item_1
@@ -159,9 +147,20 @@ public class MyActivity extends ActionBarActivity {
                 listView.setDividerHeight(0);
                 listView.setAdapter(arrayAdapter);
 
-                alert.setContentView(listView);
-                alert.show();
+                final MaterialDialog alert = new MaterialDialog(this)
+                    .setTitle("MaterialDialog")
+                    .setContentView(listView);
 
+                alert.setPositiveButton(
+                        "OK", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                alert.dismiss();
+                            }
+                        }
+                    );
+
+                alert.show();
             }
         }
     }
