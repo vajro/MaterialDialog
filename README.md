@@ -40,7 +40,8 @@ It's very easy, just like this:
 
 ```java
 // Note: if you use maven library, this code below may not return ifself(`this`),
-// because I just updated the version 1.0.7 to maven, the maven central may not yet reflect over. （2014-11-07 00:02:16）
+// because I just updated the version 1.0.7 to maven, the maven central may not yet reflect over.
+//（2014-11-07 00:02:16）
 MaterialDialog mMaterialDialog = new MaterialDialog(this)
     .setTitle("MaterialDialog")
     .setMessage("Hello world!")
@@ -69,7 +70,7 @@ mMaterialDialog.setMessage("你好，世界~");
 ```
 With the first initial and `mMaterialDialog.show()`, it will show automatedly.
 
-In addition, you can call `setView (View v) ` to set a View what you like or
+In addition, you can call `setView (View v) ` & `setContentView()` to set a View what you like or
 custom after the instantiation. This replaces the title and message.
 ```java
 EditText contentView = new EditText(this);
