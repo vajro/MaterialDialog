@@ -1,4 +1,4 @@
-# Material Dialog v1.0.7
+# Material Dialog v1.0.8
 
 This is an Android library, I call it MaterialDialog. It's very easy to use. Just `new` it & call `show()` method, then the beautiful AlertDialog will show automatedly. It is artistic, conforms to Google Material Design. I hope that you will like it, and enjoys it. ^ ^
 
@@ -22,7 +22,7 @@ Example:
 
 ```groovy
 dependencies {
-    compile 'me.drakeet.materialdialog:library:1.0.7'
+    compile 'me.drakeet.materialdialog:library:1.0.8'
 }
 ```
 
@@ -84,6 +84,9 @@ And, you can call `setBackgroundResource(int resId)` or `setBackground(Drawable 
 ```java
 mMaterialDialog.setBackgroundResource(R.drawable.background);
 ```
+## 1.0.8
+Add every method return `this`
+
 ## 1.0.7
 Fix the BUG of `Can not show soft keyboard automatically when focus is on an EditText.`
 
