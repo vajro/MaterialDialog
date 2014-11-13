@@ -86,7 +86,10 @@ mMaterialDialog.setBackgroundResource(R.drawable.background);
 ```
 
 ## 1.0.9
-if title is null, no show it, but I think it is ugly without title...
+If title is null, no show it, but I think it is ugly without title...;
+Add set Button's text by string resId, e.g. `setPositiveButton(android.R.string.yes, new View.OnClickListener() `
+
+
 
 ## 1.0.8
 Add every method return `this`

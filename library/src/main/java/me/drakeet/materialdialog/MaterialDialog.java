@@ -131,6 +131,29 @@ public class MaterialDialog {
         return this;
     }
 
+    public MaterialDialog setPositiveButton(int resId, final View.OnClickListener listener) {
+        mPositiveButton = new Button(mContext);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        mPositiveButton.setLayoutParams(params);
+        mPositiveButton.setBackgroundResource(R.drawable.button);
+        mPositiveButton.setTextColor(Color.argb(255, 35, 159, 242));
+        mPositiveButton.setText(resId);
+        mPositiveButton.setGravity(Gravity.CENTER);
+        mPositiveButton.setTextSize(14);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        layoutParams.setMargins(dip2px(2), 0, dip2px(12), dip2px(BUTTON_BOTTOM));
+        mPositiveButton.setLayoutParams(layoutParams);
+        mPositiveButton.setOnClickListener(listener);
+
+        return this;
+    }
+
 
     public MaterialDialog setPositiveButton(String text, final View.OnClickListener listener) {
         mPositiveButton = new Button(mContext);
@@ -151,6 +174,23 @@ public class MaterialDialog {
         layoutParams.setMargins(dip2px(2), 0, dip2px(12), dip2px(BUTTON_BOTTOM));
         mPositiveButton.setLayoutParams(layoutParams);
         mPositiveButton.setOnClickListener(listener);
+
+        return this;
+    }
+
+    public MaterialDialog setNegativeButton(int resId, final View.OnClickListener listener) {
+        mNegativeButton = new Button(mContext);
+        mLayoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        mNegativeButton.setLayoutParams(mLayoutParams);
+        mNegativeButton.setBackgroundResource(R.drawable.button);
+        mNegativeButton.setText(resId);
+        mNegativeButton.setTextColor(Color.argb(222, 0, 0, 0));
+        mNegativeButton.setTextSize(14);
+        mNegativeButton.setGravity(Gravity.CENTER);
+        mNegativeButton.setOnClickListener(listener);
 
         return this;
     }

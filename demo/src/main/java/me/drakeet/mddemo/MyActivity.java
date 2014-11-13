@@ -166,7 +166,7 @@ public class MyActivity extends ActionBarActivity {
             case R.id.button_set_notitile: {
                 final MaterialDialog materialDialog = new MaterialDialog(this);
                 materialDialog.setMessage("This is a dialog without title. This is a dialog without title. This is a dialog without title. This is a dialog without title. This is a dialog without title. ")
-                        .setPositiveButton("ok", new View.OnClickListener() {
+                        .setPositiveButton(android.R.string.yes, new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
                                         materialDialog.dismiss();
