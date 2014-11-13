@@ -161,6 +161,18 @@ public class MyActivity extends ActionBarActivity {
                     );
 
                 alert.show();
+                break;
+            }
+            case R.id.button_set_notitile: {
+                final MaterialDialog materialDialog = new MaterialDialog(this);
+                materialDialog.setMessage("This is a dialog without title. This is a dialog without title. This is a dialog without title. This is a dialog without title. This is a dialog without title. ")
+                        .setPositiveButton("ok", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        materialDialog.dismiss();
+                                    }
+                                });
+                materialDialog.show();
             }
         }
     }

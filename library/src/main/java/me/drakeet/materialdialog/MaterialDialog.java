@@ -231,6 +231,9 @@ public class MaterialDialog {
             if (mTitle != null) {
                 setTitle(mTitle);
             }
+            if (mTitle == null && mTitleResId == 0) {
+                mTitleView.setVisibility(View.GONE);
+            }
             if (mMessageResId != 0) {
                 setMessage(mMessageResId);
             }

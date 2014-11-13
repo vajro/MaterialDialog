@@ -1,4 +1,4 @@
-# Material Dialog v1.0.8
+# Material Dialog v1.0.9
 
 This is an Android library, I call it MaterialDialog. It's very easy to use. Just `new` it & call `show()` method, then the beautiful AlertDialog will show automatedly. It is artistic, conforms to Google Material Design. I hope that you will like it, and enjoys it. ^ ^
 
@@ -84,6 +84,10 @@ And, you can call `setBackgroundResource(int resId)` or `setBackground(Drawable 
 ```java
 mMaterialDialog.setBackgroundResource(R.drawable.background);
 ```
+
+## 1.0.9
+if title is null, no show it, but I think it is ugly without title...
+
 ## 1.0.8
 Add every method return `this`
 
@@ -95,6 +99,10 @@ Add `setCanceledOnTouchOutside()` // You should set it before `show()`, otherwis
 Add `setContentView()`
 
 Add Button press style;
+
+...
+
+I recently was too busy, if you have any Suggestions for the library, I encourage you to read the source code, and try to achieve your requirements, and then I'll merger it. We create good world together.
 
 ## BUG
 

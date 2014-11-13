@@ -28,18 +28,18 @@
                 android:textSize="23sp"
                 android:id="@+id/title"
                 android:text="Material title"
-                android:paddingLeft="23dp"
-                android:paddingTop="23dp"
-                android:paddingRight="24dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginTop="23dp"
+                android:layout_marginRight="24dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"/>
 
             <LinearLayout
                 android:id="@+id/message_content_view"
-                android:paddingLeft="24dp"
-                android:paddingRight="23dp"
-                android:paddingBottom="14dp"
-                android:paddingTop="20dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginBottom="14dp"
+                android:layout_marginTop="20dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
 
