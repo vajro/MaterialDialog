@@ -22,7 +22,7 @@ Example:
 
 ```groovy
 dependencies {
-    compile 'me.drakeet.materialdialog:library:1.0.8'
+    compile 'me.drakeet.materialdialog:library:1.0.9'
 }
 ```
 
