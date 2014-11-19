@@ -22,6 +22,7 @@ Example:
 
 ```groovy
 dependencies {
+    // 1.1.0 coming soon...
     compile 'me.drakeet.materialdialog:library:1.0.9'
 }
 ```
