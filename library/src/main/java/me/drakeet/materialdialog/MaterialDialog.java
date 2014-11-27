@@ -246,6 +246,8 @@ public class MaterialDialog {
             contv.setFocusable(true);
             contv.setFocusableInTouchMode(true);
 
+            mAlertDialogWindow.setBackgroundDrawableResource(R.drawable.material_dialog_window);
+
             mAlertDialogWindow.setContentView(contv);
             // mAlertDialogWindow.setContentView(R.layout.layout_materialdialog);
 
