@@ -1,4 +1,4 @@
-# Material Dialog v1.2.0
+# Material Dialog v1.2.1
 
 This is an Android library, I call it MaterialDialog. It's very easy to use. Just `new` it & call `show()` method, then the beautiful AlertDialog will show automatedly. It is artistic, conforms to Google Material Design. I hope that you will like it, and enjoys it. ^ ^
 
@@ -22,7 +22,7 @@ Example:
 
 ```groovy
 dependencies {
-    // version 1.2.0 in the maven repository will take effect tomorrow. Then I will modify the following code.
+    // version 1.2.1 in the maven repository will take effect tomorrow. Then I will modify the following code.
     compile 'me.drakeet.materialdialog:library:1.1.0'
 }
 ```
@@ -86,8 +86,9 @@ And, you can call `setBackgroundResource(int resId)` or `setBackground(Drawable 
 mMaterialDialog.setBackgroundResource(R.drawable.background);
 ```
 
-## 1.2.0
+## 1.2.1
 Now, It has been able to run perfectly on L.
+Fix the button style on L.
 
 ## 1.1.0
 fix the keyboard/input bug when more show. 

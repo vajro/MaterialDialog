@@ -1,11 +1,13 @@
 package me.drakeet.materialdialog;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -99,6 +101,10 @@ public class MaterialDialog {
         return (int) (dpValue * scale + 0.5f);
     }
 
+    private static boolean isLollipop() {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.L;
+    }
+
     public MaterialDialog setTitle(int resId) {
         mTitleResId = resId;
         if (mBuilder != null) {
@@ -150,7 +156,9 @@ public class MaterialDialog {
         layoutParams.setMargins(dip2px(2), 0, dip2px(12), dip2px(BUTTON_BOTTOM));
         mPositiveButton.setLayoutParams(layoutParams);
         mPositiveButton.setOnClickListener(listener);
-
+        if (isLollipop()) {
+            mPositiveButton.setBackgroundResource(android.R.color.transparent);
+        }
         return this;
     }
 
@@ -174,7 +182,9 @@ public class MaterialDialog {
         layoutParams.setMargins(dip2px(2), 0, dip2px(12), dip2px(BUTTON_BOTTOM));
         mPositiveButton.setLayoutParams(layoutParams);
         mPositiveButton.setOnClickListener(listener);
-
+        if (isLollipop()) {
+            mPositiveButton.setBackgroundResource(android.R.color.transparent);
+        }
         return this;
     }
 
@@ -191,6 +201,9 @@ public class MaterialDialog {
         mNegativeButton.setTextSize(14);
         mNegativeButton.setGravity(Gravity.CENTER);
         mNegativeButton.setOnClickListener(listener);
+        if (isLollipop()) {
+            mNegativeButton.setBackgroundResource(android.R.color.transparent);
+        }
 
         return this;
     }
@@ -208,6 +221,9 @@ public class MaterialDialog {
         mNegativeButton.setTextSize(14);
         mNegativeButton.setGravity(Gravity.CENTER);
         mNegativeButton.setOnClickListener(listener);
+        if (isLollipop()) {
+            mNegativeButton.setBackgroundResource(android.R.color.transparent);
+        }
 
         return this;
     }
@@ -238,7 +254,7 @@ public class MaterialDialog {
 
             mAlertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
             mAlertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-			
+
 			mAlertDialog.show();
 
             mAlertDialogWindow = mAlertDialog.getWindow();
