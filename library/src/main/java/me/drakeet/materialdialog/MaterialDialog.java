@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -251,11 +252,10 @@ public class MaterialDialog {
 
         private Builder() {
             mAlertDialog = new AlertDialog.Builder(mContext).create();
+            mAlertDialog.show();
 
             mAlertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
             mAlertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
-
-			mAlertDialog.show();
 
             mAlertDialogWindow = mAlertDialog.getWindow();
             View contv = LayoutInflater.from(mContext).inflate(R.layout.layout_materialdialog, null);
@@ -308,7 +308,6 @@ public class MaterialDialog {
                     mNegativeButton.setLayoutParams(mLayoutParams);
                     mButtonLayout.addView(mNegativeButton, 1);
                 } else {
-                    //Toast.makeText(mContext, "hdafd", Toast.LENGTH_SHORT).show();
                     mNegativeButton.setLayoutParams(mLayoutParams);
                     mButtonLayout.addView(mNegativeButton);
                 }
@@ -400,7 +399,6 @@ public class MaterialDialog {
             ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             view.setLayoutParams(layoutParams);
 
-
             view.setOnFocusChangeListener(
                     new View.OnFocusChangeListener() {
                         @Override
@@ -432,16 +430,15 @@ public class MaterialDialog {
                         editText.setFocusableInTouchMode(true);
                     }
                 }
+                for (int i = 0; i < viewGroup.getChildCount(); i++) {
+                    if (viewGroup.getChildAt(i) instanceof AutoCompleteTextView) {
+                        AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) viewGroup.getChildAt(i);
+                        autoCompleteTextView.setFocusable(true);
+                        autoCompleteTextView.requestFocus();
+                        autoCompleteTextView.setFocusableInTouchMode(true);
+                    }
+                }
             }
-
-//            view.post(new Runnable() {
-//                          public void run() {
-//                              view.setFocusable(true);
-//                              view.setFocusableInTouchMode(true);
-//                              view.requestFocus();
-//                          }
-//                      });
-
         }
 
         public void setContentView(View contentView) {
@@ -451,6 +448,14 @@ public class MaterialDialog {
             if (linearLayout != null) {
                 linearLayout.removeAllViews();
                 linearLayout.addView(contentView);
+            }
+            for (int i = 0; i < linearLayout.getChildCount(); i++) {
+                if (linearLayout.getChildAt(i) instanceof AutoCompleteTextView) {
+                    AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) linearLayout.getChildAt(i);
+                    autoCompleteTextView.setFocusable(true);
+                    autoCompleteTextView.requestFocus();
+                    autoCompleteTextView.setFocusableInTouchMode(true);
+                }
             }
         }
 

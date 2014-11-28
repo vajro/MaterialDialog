@@ -116,24 +116,6 @@ public class MyActivity extends ActionBarActivity {
                 break;
             }
             case R.id.button_set_contentView: {
-                /*
-                if (mMaterialDialog != null) {
-                    ListView listView = new ListView(this);
-                    List<String> list = new ArrayList<String>();
-                    for (int j = 0; j < 4; j++) {
-                        list.add("item " + j);
-                    }
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                            this,
-                            android.R.layout.simple_list_item_1,
-                            list
-                    );
-                    listView.setAdapter(arrayAdapter);
-                    mMaterialDialog.setContentView(listView);
-                    mMaterialDialog.show();
-                }
-                */
-
                 final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                         this,
                         android.R.layout.simple_list_item_1
