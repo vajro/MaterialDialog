@@ -22,8 +22,7 @@ Example:
 
 ```groovy
 dependencies {
-    // version 1.2.1 in the maven repository will take effect tomorrow. Then I will modify the following code.
-    compile 'me.drakeet.materialdialog:library:1.1.0'
+    compile 'me.drakeet.materialdialog:library:1.2.2'
 }
 ```
 
