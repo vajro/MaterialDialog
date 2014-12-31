@@ -103,7 +103,7 @@ public class MaterialDialog {
     }
 
     private static boolean isLollipop() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.L;
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
     }
 
     public MaterialDialog setTitle(int resId) {
