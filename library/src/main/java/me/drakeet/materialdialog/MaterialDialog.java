@@ -19,6 +19,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -103,7 +105,7 @@ public class MaterialDialog {
     }
 
     private static boolean isLollipop() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.L;
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
     }
 
     public MaterialDialog setTitle(int resId) {
@@ -442,8 +444,11 @@ public class MaterialDialog {
         }
 
         public void setContentView(View contentView) {
-            ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             contentView.setLayoutParams(layoutParams);
+            if (contentView instanceof ListView) {
+                setListViewHeightBasedOnChildren((ListView) contentView);
+            }
             LinearLayout linearLayout = (LinearLayout) mAlertDialogWindow.findViewById(R.id.message_content_view);
             if (linearLayout != null) {
                 linearLayout.removeAllViews();
@@ -474,4 +479,28 @@ public class MaterialDialog {
             mAlertDialog.setCanceledOnTouchOutside(canceledOnTouchOutside);
         }
     }
+
+    /**
+     * 动态测量listview-Item的高度
+     * @param listView
+     */
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            // pre-condition
+            return;
+        }
+
+        int totalHeight = 0;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(0, 0);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
+    }
+
 }
