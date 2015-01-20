@@ -1,4 +1,4 @@
-# Material Dialog v1.2.3
+# Material Dialog v1.2.2
 
 This is an Android library, I call it MaterialDialog. It's very easy to use. Just `new` it & call `show()` method, then the beautiful AlertDialog will show automatedly. It is artistic, conforms to Google Material Design. I hope that you will like it, and enjoys it. ^ ^
 
@@ -22,8 +22,7 @@ Example:
 
 ```groovy
 dependencies {
-    //compile 'me.drakeet.materialdialog:library:1.2.2'
-    compile 'me.drakeet.materialdialog:library:1.2.3'
+    compile 'me.drakeet.materialdialog:library:1.2.2'
 }
 ```
 
