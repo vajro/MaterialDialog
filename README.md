@@ -1,3 +1,22 @@
+#Forked from MaterialDialog
+
+##To Use:
+
+####Gradle
+
+```groovy
+repositories {
+	// ...
+        maven { url "https://jitpack.io" }
+}
+
+dependencies {
+	compile 'com.github.vajro:MaterialDialog:1.0'
+}
+```
+
+#Original README
+
 # Material Dialog v1.2.2
 
 This is an Android library, I call it MaterialDialog. It's very easy to use. Just `new` it & call `show()` method, then the beautiful AlertDialog will show automatedly. It is artistic, conforms to Google Material Design. I hope that you will like it, and enjoys it. ^ ^
