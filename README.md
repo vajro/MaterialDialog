@@ -1,11 +1,12 @@
 Forked from <a href="https://github.com/drakeet"> Material Dialog</a>
 
+[![Release](https://img.shields.io/github/tag/vajro/MaterialDialog.svg?label=JitPack)](https://jitpack.io/#vajro/MaterialDialog)
+
 ####Gradle Usage:
 
-```groovy
+```gradle
 repositories {
-	// ...
-        maven { url "https://jitpack.io" }
+	maven { url "https://jitpack.io" }
 }
 
 dependencies {
