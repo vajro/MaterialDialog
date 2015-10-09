@@ -1,8 +1,6 @@
-#Forked from MaterialDialog
+Forked from <a href="https://github.com/drakeet"> Material Dialog</a>
 
-##To Use:
-
-####Gradle
+####Gradle Usage:
 
 ```groovy
 repositories {
