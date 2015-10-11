@@ -479,7 +479,6 @@ public class MaterialDialog {
             mAlertDialog.setCanceledOnTouchOutside(canceledOnTouchOutside);
         }
     }
-<<<<<<< HEAD
 
     /**
      * 动态测量listview-Item的高度
@@ -505,6 +504,4 @@ public class MaterialDialog {
     }
 
 }
-=======
 }
->>>>>>> origin/master
