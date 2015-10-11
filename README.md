@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-	compile 'com.github.vajro:MaterialDialog:1.0'
+	compile 'com.github.vajro:MaterialDialog:1.0.1'
 }
 ```
 
