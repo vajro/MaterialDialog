@@ -61,6 +61,14 @@ public class MaterialDialog {
             mAlertDialog.show();
         mHasShow = true;
     }
+    public void show(bool again) {
+        if (mHasShow == false || again)
+            mBuilder = new Builder();
+        else
+            mAlertDialog.show();
+        mHasShow = true;
+    }
+
 
     public MaterialDialog setView(View view) {
         mView = view;
