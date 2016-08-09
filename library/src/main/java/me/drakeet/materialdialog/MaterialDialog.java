@@ -61,14 +61,6 @@ public class MaterialDialog {
             mAlertDialog.show();
         mHasShow = true;
     }
-    public void show(Boolean again) {
-        if (mHasShow == false || again)
-            mBuilder = new Builder();
-        else
-            mAlertDialog.show();
-        mHasShow = true;
-    }
-
 
     public MaterialDialog setView(View view) {
         mView = view;
@@ -414,13 +406,13 @@ public class MaterialDialog {
                         @Override
                         public void onFocusChange(View v, boolean hasFocus) {
                             System.out.println("-->" + hasFocus);
-                            mAlertDialogWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-                            // show imm
-                            InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.toggleSoftInput(
-                                    InputMethodManager.SHOW_FORCED,
-                                    InputMethodManager.HIDE_IMPLICIT_ONLY
-                            );
+                            // mAlertDialogWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                            // // show imm
+                            // InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                            // imm.toggleSoftInput(
+                            //         InputMethodManager.SHOW_FORCED,
+                            //         InputMethodManager.HIDE_IMPLICIT_ONLY
+                            // );
 
                         }
                     }
