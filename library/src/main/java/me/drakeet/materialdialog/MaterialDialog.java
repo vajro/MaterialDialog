@@ -61,7 +61,7 @@ public class MaterialDialog {
             mAlertDialog.show();
         mHasShow = true;
     }
-    public void show(bool again) {
+    public void show(Boolean again) {
         if (mHasShow == false || again)
             mBuilder = new Builder();
         else
